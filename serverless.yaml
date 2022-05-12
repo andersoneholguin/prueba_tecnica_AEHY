@@ -1,0 +1,50 @@
+#serverless.yml 
+    service: usersCrud 
+    provider:
+        name: aws
+        region: us-east-1
+        iam:
+            role:
+                statements:
+                    - Effect: Allow
+                      Action:
+                        - dynamodb:*
+                      Resource:
+                        - arn:aws:dynamodb:us-east-1:139020219113:table/usersTable
+    resources: 
+        Resources: 
+            usersTable: 
+                Type: AWS::DynamoDB::Table 
+                Properties: 
+                    TableName: usersTable 
+                    AttributeDefinitions: 
+                        - AttributeName: id 
+                          AttributeType: S 
+                    KeySchema: 
+                        - AttributeName: id 
+                          KeyType: HASH 
+                    ProvisionedThroughput: 
+                        ReadCapacityUnits: 1 
+                        WriteCapacityUnits: 1
+            administratorsTable: 
+                Type: AWS::DynamoDB::Table 
+                Properties: 
+                    TableName: administratorsTable 
+                    AttributeDefinitions: 
+                        - AttributeName: id 
+                          AttributeType: S 
+                    KeySchema: 
+                        - AttributeName: id 
+                          KeyType: HASH 
+                    ProvisionedThroughput: 
+                        ReadCapacityUnits: 1 
+                        WriteCapacityUnits: 1
+            APIInstance:
+                Type: AWS::EC2::Instance
+                Properties:
+                    ImageId: ami-0022f774911c1d690
+                    InstanceType: t2.micro
+                    SubnetId: subnet-06f9df4aec11c8393
+                    SecurityGroupIds: 
+                        - sg-0ad4464e7f08533a2
+                    KeyName: KP1
