@@ -42,6 +42,7 @@ export class AdminService {
 
     }
 
+    /** 
     async createOne(body: any){
         
         const dynamo = new AWS.DynamoDB.DocumentClient()
@@ -65,6 +66,7 @@ export class AdminService {
             }
         }
     }
+    */
 
     async findByEmail(email: string){
         let users
@@ -77,8 +79,5 @@ export class AdminService {
         const userAdmin = users.find((res:any) => res.email === email)        
         return userAdmin
     }
-
-    async updateOne(){}
-
-    async deleteOne(){}
+    
 }
