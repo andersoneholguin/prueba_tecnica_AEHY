@@ -38,8 +38,13 @@ export class UsersController {
     }
 
     @UseGuards(JwtAuthGuard)
-    @Put(':id')            
-    updateOne(@Param('id') id: number, @Body() body:userDto){        
+    @Put(':id')
+    @UsePipes(new ValidationPipe({
+        transform: true,
+        whitelist: true
+    }))        
+    updateOne(@Param('id') id: findParamsDto, @Body() body:userDto){
+        console.log(body)      
         return this.usersService.updateOne(id, body)
     }
 

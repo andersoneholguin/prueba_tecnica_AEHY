@@ -46,5 +46,5 @@
                     InstanceType: t2.micro
                     SubnetId: subnet-06f9df4aec11c8393
                     SecurityGroupIds: 
-                        - sg-0ad4464e7f08533a2
-                    KeyName: KP1
+                        - sg-02c228d23aced58a4
+                    KeyName: KP2

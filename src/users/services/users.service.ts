@@ -69,7 +69,7 @@ export class UsersService {
         
     }
 
-    async updateOne(id: number, body: userDto){
+    async updateOne(id: findParamsDto, body: userDto){
 
         const dynamo = new AWS.DynamoDB.DocumentClient()
         const {nombre, edad} = body
